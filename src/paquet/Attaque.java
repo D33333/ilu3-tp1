@@ -13,9 +13,9 @@ public class Attaque extends Bataille {
 		String nom;
 		Type type = getType();
 		if (type==Type.FEU) {
-			nom = "FeuRouge";
+			nom = "Feu Rouge";
 		} else if (type == Type.ESSENCE) {
-			nom = "PanneEssence";
+			nom = "Panne d'Essence";
 		} else if (type == Type.CREVAISON) {
 			nom = "Crevaison";
 		} else {

@@ -11,13 +11,13 @@ public class Botte extends Probleme {
 		String nom;
 		Type type = getType();
 		if (type==Type.FEU) {
-			nom = "VéhiculePrioritaire";
+			nom = "Véhicule Prioritaire";
 		} else if (type == Type.ESSENCE) {
-			nom = "CiterneEssence";
+			nom = "Citerne d'Essence";
 		} else if (type == Type.CREVAISON) {
 			nom = "Increvable";
 		} else {
-			nom = "AsDuVolant";
+			nom = "As Du Volant";
 		}
 		return nom;
 	}
