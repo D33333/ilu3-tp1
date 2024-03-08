@@ -34,7 +34,7 @@ public class Sabot implements Iterable<Carte> {
 		}
 	}
 	
-	public void ajouterFamilleCarte(Carte[] cartes) {
+	public void ajouterFamilleCarte(Carte... cartes) {
 		int i_carte = 0;
 		while (i_carte < cartes.length && cartes[i_carte]!=null) {
 			ajouterFamilleCarte(cartes[i_carte]);

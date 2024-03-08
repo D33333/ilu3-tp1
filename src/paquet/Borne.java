@@ -21,4 +21,13 @@ public class Borne extends Carte {
 		return km+" km/h";
 	}
 	
+	@Override
+	public boolean equals(Object objet) {
+		if (objet.getClass() == this.getClass()) {
+			Borne b = (Borne) objet;
+			return this.km == b.getKm();
+		}
+		return false;
+	}
+	
 }

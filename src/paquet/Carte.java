@@ -17,4 +17,9 @@ public abstract class Carte {
 	
 	@Override
 	public abstract String toString();
+	
+	@Override
+	public boolean equals(Object objet) {
+		return false;
+	}
 }

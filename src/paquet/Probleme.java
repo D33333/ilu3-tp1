@@ -31,5 +31,13 @@ public abstract class Probleme extends Carte {
 	public void setType(Type type) {
 		this.type = type;
 	}
-
+	
+	@Override
+	public boolean equals(Object objet) {
+		if (objet.getClass() == this.getClass()) {
+			Probleme pb = (Probleme) objet;
+			return this.type == pb.getType();
+		}
+		return false;
+	}
 }
