@@ -2,6 +2,7 @@ package testsFonctionnels;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import paquet.Carte;
 import paquet.JeuDeCartes;
 import paquet.Parade;
 import paquet.Probleme.Type;
+import utils.Utils;
 
 class LancementTest {
 	//Création des cartes et du sabot
@@ -68,7 +70,7 @@ class LancementTest {
 	void lancer_tests_tp2_afficher_jeu() {
 		//Affichage de toutes les cartes du jeu
 		JeuDeCartes jeu = new JeuDeCartes();
-		List<Carte> cartes = jeu.getListeDeCartes();
+		List<Carte> cartes = jeu.getListeCartes();
 		for (Carte carte : cartes) {
 			System.out.println("Carte : "+carte);
 		}
@@ -79,5 +81,20 @@ class LancementTest {
 		//Affichage de toutes les cartes du jeu
 		JeuDeCartes jeu = new JeuDeCartes();
 		System.out.println("Le nombre de carte a été respecté : "+jeu.checkCount());
+	}
+	
+	@Test
+	void lancer_tests_tp2_utils() {
+		JeuDeCartes jeu = new JeuDeCartes();
+		List<Carte> listeCarteNonMelangee = jeu.getListeCartes();
+		List<Carte> listeCartes = new ArrayList<>(listeCarteNonMelangee);
+		System.out.println(listeCartes);
+		listeCartes = Utils.melanger(listeCartes);
+		System.out.println(listeCartes);
+		System.out.println("liste mélangée sans erreur ? "
+		+ Utils.verifierMelange(listeCarteNonMelangee, listeCartes));
+		listeCartes = Utils.rassember(listeCartes);
+		System.out.println(listeCartes);
+		System.out.println("liste rassemblée sans erreur ? " + Utils.verifierRassemblement(listeCartes));
 	}
 }

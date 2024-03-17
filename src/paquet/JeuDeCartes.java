@@ -33,7 +33,7 @@ public class JeuDeCartes {
 		}
 	}
 	
-	public List<Carte> getListeDeCartes(){
+	public List<Carte> getListeCartes(){
 		return listeCartes;
 	}
 	
