@@ -88,6 +88,13 @@ public class Utils {
 		}
 		return listeCartes;
 	}
+	/**
+	 * Ou 
+	 * Pour chaque carte e de la liste à trier
+	 * ListIterator<T> it = listeTriee.listIterator();
+	 * while (it.hasNext() && !it.next().equals(e));
+	 * it.add(e);
+	 */
 	
 	public static <E> boolean verifierRassemblement(List<E> liste) {
 		ListIterator<E> iterateurBalais = liste.listIterator();

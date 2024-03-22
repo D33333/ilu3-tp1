@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import paquet.Probleme.Type;
+import utils.Utils;
 
 public class JeuDeCartes {
 	
@@ -16,6 +17,7 @@ public class JeuDeCartes {
 	
 	public JeuDeCartes() {
 		ajouterFamilleCarte(listeCartes, typesDeCartes);
+		listeCartes = Utils.melanger(listeCartes);
 	}
 	
 	private void ajouterFamilleCarte(List<Carte> liste, Carte carte) {
@@ -50,7 +52,7 @@ public class JeuDeCartes {
 	public boolean checkCount() {
 		for(Carte famille : typesDeCartes) {
 			int nbExemplaires = famille.getNombre();
-			if(compter_nb_exs(famille,listeCartes)!=nbExemplaires) {
+			if(compter_nb_exs(famille,listeCartes) != nbExemplaires) {
 				System.out.println("Carte "+famille+" : "+compter_nb_exs(famille,listeCartes)+"   "+nbExemplaires);
 				return false;
 			}

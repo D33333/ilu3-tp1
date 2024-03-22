@@ -3,6 +3,8 @@ package testsFonctionnels;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -83,6 +85,30 @@ class LancementTest {
 		System.out.println("Le nombre de carte a été respecté : "+jeu.checkCount());
 	}
 	
+	private static <E> int nbOccs(List<E> liste, E e) {
+		int compt = 0;
+		for (E elem : liste) {
+			if(e == elem) {
+				compt++;
+			}
+		}
+		return compt;
+	}
+	
+	private static <E> boolean checkMemeOccs(List<E> liste, List<E> liste2) {
+		int sizeListe = liste.size();
+		int sizeListe2 = liste2.size();
+		if(sizeListe != sizeListe2) {
+			return false;
+		}
+		for (E elem : liste) {
+			if(nbOccs(liste,elem)!=nbOccs(liste2,elem)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	@Test
 	void lancer_tests_tp2_utils() {
 		JeuDeCartes jeu = new JeuDeCartes();
@@ -90,11 +116,24 @@ class LancementTest {
 		List<Carte> listeCartes = new ArrayList<>(listeCarteNonMelangee);
 		System.out.println(listeCartes);
 		listeCartes = Utils.melanger(listeCartes);
-		System.out.println(listeCartes);
+		//Vérifier le nombre d'occurrences de chaque élément
+		System.out.println("nb occurrences inchangé ? "
+				+ checkMemeOccs(listeCarteNonMelangee,listeCartes));
+		//Vérifier rassemblement
 		System.out.println("liste mélangée sans erreur ? "
 		+ Utils.verifierMelange(listeCarteNonMelangee, listeCartes));
 		listeCartes = Utils.rassember(listeCartes);
 		System.out.println(listeCartes);
 		System.out.println("liste rassemblée sans erreur ? " + Utils.verifierRassemblement(listeCartes));
+	}
+	
+	@Test
+	void lancer_tests_tp2_melangeAuto() {
+		JeuDeCartes jeu = new JeuDeCartes();
+		List<Carte> listeCartesAutomatiquementMelangees = jeu.getListeCartes();
+		System.out.println(listeCartesAutomatiquementMelangees);
+		//Vérifier le nombre d'occurrences de chaque élément
+		System.out.println("nb occurrences inchangé ? "
+				+ jeu.checkCount());
 	}
 }
