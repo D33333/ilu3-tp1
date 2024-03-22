@@ -7,10 +7,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import jeu.Joueur;
+import jeu.MainAsList;
 import jeu.Sabot;
 import paquet.Attaque;
 import paquet.Botte;
@@ -135,5 +138,17 @@ class LancementTest {
 		//Vérifier le nombre d'occurrences de chaque élément
 		System.out.println("nb occurrences inchangé ? "
 				+ jeu.checkCount());
+	}
+	
+	@Test
+	void lancer_tests_tp3_getKM() {
+		List<Carte> pileDeLimites = new ArrayList<>();
+		List<Carte> pileDeBataille = new ArrayList<>();
+		List<Carte> collectionDeBornes = new ArrayList<>();
+		Set<Carte> bottes;
+		MainAsList main;
+		JeuDeCartes jeu = new JeuDeCartes();
+		List<Carte> listeCartesAutomatiquementMelangees = jeu.getListeCartes();
+		Joueur j = new Joueur("Bob");
 	}
 }
