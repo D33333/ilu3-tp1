@@ -44,7 +44,7 @@ public class Coup {
 	}
 	
 	@Override
-	public hashCode() {
-		
+	public int hashCode() {
+		return 31*(carte.hashCode()+joueurCible.hashCode());
 	}
 }

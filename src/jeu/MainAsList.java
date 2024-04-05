@@ -48,4 +48,11 @@ public class MainAsList implements IMain {
 		}
 		return chaine.toString();
 	}
+	
+	public boolean retirerDeLaMain(Carte carte) {
+		if (cartes.contains(carte)) {
+			return cartes.remove(carte);
+		}
+		return false;
+	}
 }

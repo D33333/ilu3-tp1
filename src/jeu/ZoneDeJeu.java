@@ -141,4 +141,39 @@ public class ZoneDeJeu implements Cartes {
 		}
 		return false;
 	}
+	
+	public boolean deposer(Carte c) {
+		if (!this.estDepotAutorise(c)) {
+			return false;
+		}
+		if (c instanceof Borne) {
+			collectionDeBornes.add((Borne) c);
+			return true;
+		} else if (c instanceof Botte) {
+			bottes.add((Botte) c);
+			if (!pileDeBataille.isEmpty()) {
+				Bataille bat = pileDeBataille.get(pileDeBataille.size()-1);
+				if (bat instanceof Attaque && ((Attaque) bat).getType().equals(((Botte) c).getType())) {
+					pileDeBataille.remove(pileDeBataille.size()-1);
+				}
+			}
+			return true;
+		} else if (c instanceof DebutLimite) {
+			pileDeLimites.add((DebutLimite) c);
+			return true;
+		} else if (c instanceof FinLimite) {
+			pileDeLimites.add((FinLimite) c);
+			return true;
+		} else if (c instanceof Bataille) {
+			if (!pileDeBataille.isEmpty()) {
+				Bataille bat = pileDeBataille.get(pileDeBataille.size()-1);
+				if (c instanceof Attaque && bat instanceof Attaque) {
+					return false;
+				}
+			}
+			pileDeBataille.add((Bataille) c);
+			return true;
+		}
+		return false;
+	}
 }

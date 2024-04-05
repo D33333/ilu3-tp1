@@ -3,6 +3,7 @@ package jeu;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -99,5 +100,21 @@ public class Joueur {
 			}
 		}
 		return tousLesCoups;
+	}
+	
+	public List<Coup> coupsDefausse() {
+		List<Coup> coupsD = new LinkedList<Coup>();
+		for (Carte carte : main.getCartes()) {
+			coupsD.add(new Coup(carte,null));
+		}
+		return coupsD;
+	}
+	
+	public boolean deposer(Carte c) {
+		return zDeJeu.deposer(c);
+	}
+	
+	public boolean retirerDeLaMain(Carte carte) {
+		return main.retirerDeLaMain(carte);
 	}
 }
