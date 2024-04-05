@@ -10,5 +10,4 @@ public class FinLimite extends Limite {
 	public String toString() {
 		return "FinDeLimiteDeVitesseA50";
 	}
-
 }

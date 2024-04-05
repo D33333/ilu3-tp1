@@ -1,7 +1,9 @@
 package paquet;
 
+import paquet.Probleme.Type;
+
 public interface Cartes {
-	public static final PRIORITAIRE = new Botte(1,Type.FEU);
-	public static final FEU_ROUGE = new Attaque(5,Type.FEU);
-	public static final FEU_VERT = new Parade(14,Type.FEU);
+	Object PRIORITAIRE = new Botte(1,Type.FEU);
+	Object FEU_ROUGE = new Attaque(5,Type.FEU);
+	Object FEU_VERT = new Parade(14,Type.FEU);
 }

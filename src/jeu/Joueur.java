@@ -1,6 +1,10 @@
 package jeu;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import paquet.Bataille;
 import paquet.Borne;
@@ -44,7 +48,7 @@ public class Joueur {
 	
 	public void donner(Carte c) {
 		main.prendre(c);
-		assert(main.possede(c));
+		assertTrue(main.possede(c));
 	}
 	
 	public Carte prendreCarte(List<Carte> sabot) {
@@ -81,6 +85,19 @@ public class Joueur {
 	}
 	
 	public boolean estBloque() {
-		return !zDeJeu.peutAvancer();
+		return zDeJeu.estBloque();
+	}
+	
+	public Set<Coup> coupsPossibles(Set<Joueur> participants){
+		Set<Coup> tousLesCoups = new HashSet<Coup>();
+		for (Joueur participant : participants) {
+			for (Carte carte : main.getCartes()) {
+				Coup coup = new Coup(carte, participant);
+				if (coup.estValide(this)) {
+					tousLesCoups.add(coup);
+				}
+			}
+		}
+		return tousLesCoups;
 	}
 }

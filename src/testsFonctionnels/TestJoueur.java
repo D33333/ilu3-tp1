@@ -1,36 +1,16 @@
 package testsFonctionnels;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import jeu.Joueur;
 import jeu.MainAsList;
-import jeu.Sabot;
 import jeu.ZoneDeJeu;
-import paquet.Attaque;
 import paquet.Borne;
-import paquet.Botte;
-import paquet.Carte;
 import paquet.DebutLimite;
 import paquet.FinLimite;
-import paquet.Parade;
-import paquet.Probleme.Type;
 
 class TestJoueur {
-	//Création des cartes et du sabot
-	Carte accident = new Attaque(3, Type.ACCIDENT);
-	Carte reparation = new Parade(3, Type.ACCIDENT);
-	Carte asDuVolant = new Botte(1, Type.ACCIDENT);
-	
-	Sabot sabot = new Sabot(110);
-	
-	@BeforeEach
-	public void init() {
-		System.out.println("Initialisation...");
-		//Ajout des cartes dans le sabot
-		sabot.ajouterFamilleCarte(accident, reparation, asDuVolant);
-	}
 	
 	@Test
 	void lancer_testsJ_ajoutBornes() {
@@ -51,8 +31,8 @@ class TestJoueur {
 		ZoneDeJeu zDeJeu = new ZoneDeJeu();
 		MainAsList main = new MainAsList();
 		Joueur jj = new Joueur("JJ",zDeJeu,main);
-		DebutLimite debutL = new DebutLimite(50);
-		FinLimite finL = new FinLimite(50);
+		DebutLimite debutL = new DebutLimite(1);
+		FinLimite finL = new FinLimite(1);
 		jj.donner(debutL);
 		jj.donner(finL);
 		assertEquals(200,jj.donnerLimitationVitesse()); //aucune limite

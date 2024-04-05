@@ -1,17 +1,21 @@
 package jeu;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import paquet.Carte;
 
 public class MainAsList implements IMain {
 	
-	List<Carte> cartes = new ArrayList<>();
+	List<Carte> cartes = new LinkedList<>();
 	
 	public MainAsList() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public List<Carte> getCartes() {
+		return cartes;
 	}
 
 	@Override
@@ -22,7 +26,8 @@ public class MainAsList implements IMain {
 
 	@Override
 	public void prendre(Carte c) {
-		cartes.add(c);		
+		cartes.add(c);
+		System.out.println("contient : "+cartes.contains(c)+" "+c.equals(c));
 	}
 
 	public boolean possede(Carte c) {
