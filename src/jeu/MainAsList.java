@@ -6,7 +6,7 @@ import java.util.List;
 
 import paquet.Carte;
 
-public class MainAsList implements Main {
+public class MainAsList implements IMain {
 	
 	List<Carte> cartes = new ArrayList<>();
 	
@@ -33,5 +33,14 @@ public class MainAsList implements Main {
 	public void jouer(Carte c) {
 		assert(possede(c));
 		cartes.remove(c);
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder chaine = new StringBuilder("Dans la main il y a :\n");
+		for (Carte carte : cartes) {
+			chaine.append(" - "+carte+"\n");
+		}
+		return chaine.toString();
 	}
 }

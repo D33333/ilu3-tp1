@@ -1,51 +1,30 @@
 package jeu;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
+import paquet.Bataille;
+import paquet.Borne;
+import paquet.Botte;
 import paquet.Carte;
+import paquet.Limite;
 
 public class Joueur {
 	
 	private String nom;
-	private List<Carte> pileDeLimites = new ArrayList<>();
-	private List<Carte> pileDeBataille = new ArrayList<>();
-	private List<Carte> collectionDeBornes = new ArrayList<>();
-	private Set<Carte> bottes;
+	private ZoneDeJeu zDeJeu;
 	private MainAsList main;
 	
-	public Joueur(String nom, List<Carte> lims, List<Carte> bat, List<Carte> bornes, Set<Carte> bottes, MainAsList main){
+	public Joueur(String nom, ZoneDeJeu zDeJeu, MainAsList main){
 		this.nom = nom;
-		this.pileDeLimites = lims;
-		this.pileDeBataille = bat;
-		this.collectionDeBornes = bornes;
-		this.bottes = bottes;
+		this.zDeJeu = zDeJeu;
 		this.main = main;
 	}
 	
 	public String getNom() {
 		return nom;
 	}
-
-	public List<Carte> getPileDeLimites() {
-		return pileDeLimites;
-	}
-
-	public List<Carte> getPileDeBataille() {
-		return pileDeBataille;
-	}
-
-	public List<Carte> getCollectionDeBornes() {
-		return collectionDeBornes;
-	}
-
-	public Set<Carte> getBottes() {
-		return bottes;
-	}
 	
-	public Main getMain() {
+	public IMain getMain() {
 		return main;
 	}
 	
@@ -77,11 +56,31 @@ public class Joueur {
 		return c;
 	}
 	
+	public void deposer(Borne borne) {
+		zDeJeu.deposer(borne);
+	}
+	
+	public void deposer(Limite lim) {
+		zDeJeu.deposer(lim);
+	}
+	
+	public void deposer(Bataille bat) {
+		zDeJeu.deposer(bat);
+	}
+	
+	public void deposer(Botte botte) {
+		zDeJeu.deposer(botte);
+	}
+	
 	public int getKM() {
-		int somme = 0;
-		for (Carte borne : collectionDeBornes) {
-			somme += borne.getNombre();
-		}
-		return somme;
+		return zDeJeu.donnerKmParcourus();
+	}
+	
+	public int donnerLimitationVitesse() {
+		return zDeJeu.donnerLimitationVitesse();
+	}
+	
+	public boolean estBloque() {
+		return !zDeJeu.peutAvancer();
 	}
 }
