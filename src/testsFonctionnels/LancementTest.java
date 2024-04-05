@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -16,6 +17,7 @@ import jeu.Joueur;
 import jeu.MainAsList;
 import jeu.Sabot;
 import paquet.Attaque;
+import paquet.Borne;
 import paquet.Botte;
 import paquet.Carte;
 import paquet.JeuDeCartes;
@@ -145,10 +147,11 @@ class LancementTest {
 		List<Carte> pileDeLimites = new ArrayList<>();
 		List<Carte> pileDeBataille = new ArrayList<>();
 		List<Carte> collectionDeBornes = new ArrayList<>();
-		Set<Carte> bottes;
-		MainAsList main;
-		JeuDeCartes jeu = new JeuDeCartes();
-		List<Carte> listeCartesAutomatiquementMelangees = jeu.getListeCartes();
-		Joueur j = new Joueur("Bob");
+		Set<Carte> bottes = new HashSet<Carte>();
+		MainAsList main = new MainAsList();
+		Joueur j = new Joueur("Bob", pileDeLimites, pileDeBataille, collectionDeBornes, bottes, main);
+		Carte borne50 = new Borne(2,50);
+		j.donner(borne50);
+		assertEquals(100,j.getKM());
 	}
 }
