@@ -36,11 +36,17 @@ public class Jeu {
 	
 	public void jouerTour() {
 		for (Joueur j : joueurs) {
-			j.donner(sabot.piocher());
-			if (j.coupsPossibles(joueurs).isEmpty()) {
-				j.coupsDefausse();
+			Carte carte = sabot.piocher();
+			j.donner(carte);
+			System.out.println("Le joueur "+j+" a pioche: "+carte);
+			System.out.println("Il a dans sa main : "+j.getMain());
+			Coup coupChoisi = j.choisirCoup(joueurs);
+			System.out.println(coupChoisi);
+			j.retirerDeLaMain(coupChoisi.getCarte());
+			if (coupChoisi.getJoueurCible()==null) {
+				sabot.ajouterFamilleCarte(coupChoisi.getCarte());
 			} else {
-				
+				coupChoisi.getJoueurCible().deposer(coupChoisi.getCarte());
 			}
 		}
 	}

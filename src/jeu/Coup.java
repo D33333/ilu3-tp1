@@ -47,4 +47,9 @@ public class Coup {
 	public int hashCode() {
 		return 31*(carte.hashCode()+joueurCible.hashCode());
 	}
+	
+	@Override
+	public String toString() {
+		return "deposer la carte "+carte+" dans la zone de jeu de "+joueurCible;
+	}
 }

@@ -2,9 +2,11 @@ package jeu;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import paquet.Bataille;
@@ -116,5 +118,16 @@ public class Joueur {
 	
 	public boolean retirerDeLaMain(Carte carte) {
 		return main.retirerDeLaMain(carte);
+	}
+	
+	public Coup choisirCoup(Set<Joueur> participants) {
+		Random random = new Random();
+		Set<Coup> coupsPoss = coupsPossibles(participants);
+		if (coupsPoss.isEmpty()) {
+			List<Coup> liCoups = coupsDefausse();
+			liCoups.get(random.nextInt(liCoups.size()));
+		}
+		List<Coup> liCoupsPoss = new ArrayList<Coup>(coupsPoss);
+		return liCoupsPoss.get(random.nextInt(liCoupsPoss.size()));
 	}
 }

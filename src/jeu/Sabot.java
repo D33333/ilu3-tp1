@@ -23,13 +23,14 @@ public class Sabot implements Iterable<Carte> {
 			cartes[nbCartes] = carte;
 			nbCartes++;
 		} else {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(nbCartes+" "+cartes.length);
 		}
 	}
 	
 	public void ajouterFamilleCarte(Carte carte) {
 		int nbCartesFamille = carte.getNombre();
 		for (int i = 0; i < nbCartesFamille; i++) {
+			System.out.println(nbCartesFamille+" "+i);
 			ajouterCarte(carte);
 		}
 	}

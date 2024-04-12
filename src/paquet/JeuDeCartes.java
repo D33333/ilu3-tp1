@@ -23,6 +23,7 @@ public class JeuDeCartes {
 	private void ajouterFamilleCarte(List<Carte> liste, Carte carte) {
 		int nbCartesFamille = carte.getNombre();
 		for (int i = 0; i < nbCartesFamille; i++) {
+			carte.setNombre(1);
 			liste.add(carte);
 		}
 	}
