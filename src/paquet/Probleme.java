@@ -1,5 +1,10 @@
 package paquet;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import paquet.Probleme.Type;
+
 public abstract class Probleme extends Carte {
 	
 	public enum Type{

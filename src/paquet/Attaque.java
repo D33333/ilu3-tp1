@@ -1,8 +1,17 @@
 package paquet;
 
-import paquet.Probleme.Type;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Attaque extends Bataille {
+	
+	private static Map<Type,String> nomType = new HashMap<>();
+	static {
+		nomType.put(Type.FEU,"Feu Rouge");
+		nomType.put(Type.ESSENCE,"Panne d'Essence");
+		nomType.put(Type.CREVAISON,"Crevaison");
+		nomType.put(Type.ACCIDENT,"Accident");
+	};
 	
 	public Attaque(int n, Type t) {
 		super(n, t);
@@ -10,17 +19,6 @@ public class Attaque extends Bataille {
 	
 	@Override
 	public String toString() {
-		String nom;
-		Type type = getType();
-		if (type==Type.FEU) {
-			nom = "Feu Rouge";
-		} else if (type == Type.ESSENCE) {
-			nom = "Panne d'Essence";
-		} else if (type == Type.CREVAISON) {
-			nom = "Crevaison";
-		} else {
-			nom = "Accident";
-		}
-		return nom;
+		return nomType.get(getType());
 	}
 }
